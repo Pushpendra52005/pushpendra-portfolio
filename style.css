@@ -1,0 +1,355 @@
+/* =========================================================
+   PREMIUM PORTFOLIO UPGRADE PACK
+========================================================= */
+
+/* ---------- NOISE TEXTURE ---------- */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("https://www.transparenttextures.com/patterns/noise.png");
+  opacity:.03;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* ---------- MOUSE GLOW ---------- */
+body::before{
+  content:'';
+  position:fixed;
+  width:500px;
+  height:500px;
+  left:var(--mx);
+  top:var(--my);
+  transform:translate(-50%,-50%);
+  background:
+    radial-gradient(
+      circle,
+      rgba(99,102,241,.14),
+      transparent 70%
+    );
+  pointer-events:none;
+  z-index:-1;
+  transition:
+    width .2s ease,
+    height .2s ease;
+}
+
+/* ---------- GLASS EFFECT ---------- */
+.proj-card,
+.teach-approach,
+.skills-table,
+.edu-list,
+.tl-card,
+.yt-video-card{
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+
+/* ---------- PREMIUM BORDER ANIMATION ---------- */
+.proj-card::after{
+  content:'';
+  position:absolute;
+  inset:-1px;
+  border-radius:inherit;
+  padding:1px;
+
+  background:
+    linear-gradient(
+      130deg,
+      transparent,
+      rgba(99,102,241,.45),
+      rgba(45,212,191,.35),
+      transparent
+    );
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+
+  animation:borderMove 5s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes borderMove{
+  100%{
+    filter:hue-rotate(360deg);
+  }
+}
+
+/* ---------- SMOOTH BLUR REVEAL ---------- */
+.fade-up,
+.fade-right{
+  filter:blur(10px);
+}
+
+.fade-up.visible,
+.fade-right.visible{
+  filter:blur(0);
+}
+
+/* ---------- BUTTON SHINE ---------- */
+.btn-fill{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn-fill::after{
+  content:'';
+  position:absolute;
+  top:-50%;
+  left:-60%;
+  width:42px;
+  height:220%;
+  background:rgba(255,255,255,.18);
+  transform:rotate(25deg);
+  transition:.7s ease;
+}
+
+.btn-fill:hover::after{
+  left:140%;
+}
+
+/* ---------- HERO IMAGE BORDER ---------- */
+.photo-wrap{
+  position:relative;
+  isolation:isolate;
+}
+
+.photo-wrap::before{
+  content:'';
+  position:absolute;
+  inset:-3px;
+  border-radius:inherit;
+
+  background:
+    linear-gradient(
+      45deg,
+      #6366f1,
+      #2dd4bf,
+      #6366f1
+    );
+
+  background-size:300% 300%;
+
+  animation:gradientMove 5s ease infinite;
+
+  z-index:-1;
+}
+
+@keyframes gradientMove{
+  0%{
+    background-position:0% 50%;
+  }
+  50%{
+    background-position:100% 50%;
+  }
+  100%{
+    background-position:0% 50%;
+  }
+}
+
+/* ---------- IMAGE ZOOM ---------- */
+.photo-wrap img{
+  transition:
+    transform .7s ease,
+    filter .5s ease;
+}
+
+.photo-wrap:hover img{
+  transform:scale(1.08);
+  filter:brightness(1.05);
+}
+
+/* ---------- FLOATING PROJECT CARDS ---------- */
+.proj-card{
+  animation:floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+/* ---------- HOVER GLOW ---------- */
+.proj-card:hover,
+.tl-card:hover,
+.yt-video-card:hover{
+  box-shadow:
+    0 10px 40px rgba(0,0,0,.45),
+    0 0 30px rgba(99,102,241,.18);
+}
+
+/* ---------- NAVBAR GLOW ---------- */
+.navbar.scrolled{
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+
+  box-shadow:
+    0 6px 30px rgba(0,0,0,.5),
+    0 0 20px rgba(99,102,241,.08);
+}
+
+/* ---------- HERO TITLE GLOW ---------- */
+.hero-text h1 em{
+  text-shadow:
+    0 0 10px rgba(99,102,241,.4),
+    0 0 20px rgba(45,212,191,.2);
+}
+
+/* ---------- SKILL CHIP EFFECT ---------- */
+.sk-chip{
+  position:relative;
+  overflow:hidden;
+}
+
+.sk-chip::before{
+  content:'';
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,.12),
+      transparent
+    );
+
+  transform:translateX(-100%);
+  transition:.6s;
+}
+
+.sk-chip:hover::before{
+  transform:translateX(100%);
+}
+
+/* ---------- SECTION TITLE LINE ---------- */
+.sec-head h2{
+  position:relative;
+  display:inline-block;
+}
+
+.sec-head h2::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-10px;
+
+  width:60%;
+  height:3px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent),
+      var(--teal)
+    );
+}
+
+/* ---------- PREMIUM SCROLLBAR ---------- */
+::-webkit-scrollbar{
+  width:6px;
+}
+
+::-webkit-scrollbar-thumb{
+  background:
+    linear-gradient(
+      to bottom,
+      #6366f1,
+      #2dd4bf
+    );
+
+  border-radius:10px;
+}
+
+/* ---------- TEXT SELECTION ---------- */
+::selection{
+  background:#6366f1;
+  color:white;
+}
+
+/* ---------- SMOOTH SECTION HOVER ---------- */
+.section{
+  position:relative;
+}
+
+.section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+
+  background:
+    radial-gradient(
+      circle at var(--mx) var(--my),
+      rgba(99,102,241,.05),
+      transparent 40%
+    );
+
+  opacity:0;
+  transition:.5s;
+
+  pointer-events:none;
+}
+
+.section:hover::before{
+  opacity:1;
+}
+
+/* ---------- FOOTER GLOW ---------- */
+.footer{
+  position:relative;
+  overflow:hidden;
+}
+
+.footer::before{
+  content:'';
+  position:absolute;
+  top:-120px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:400px;
+  height:200px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(99,102,241,.15),
+      transparent 70%
+    );
+
+  filter:blur(40px);
+}
+
+/* ---------- MOBILE OPTIMIZATION ---------- */
+@media(max-width:768px){
+
+  body::before,
+  body::after{
+    display:none;
+  }
+
+  .proj-card{
+    animation:none;
+  }
+
+  .proj-card:hover{
+    transform:none;
+  }
+
+  .photo-wrap:hover img{
+    transform:none;
+  }
+
+}
