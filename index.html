@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Pushpendra Maurya | Data Scientist</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#060606;
+--card:#101010;
+--soft:#161616;
+--text:#ffffff;
+--muted:#b8b8b8;
+--border:rgba(255,255,255,.08);
+--accent:#ffffff;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Plus Jakarta Sans',sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+cursor:none;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+background:#333;
+border-radius:50px;
+}
+
+/* CUSTOM CURSOR */
+
+#cursor{
+width:18px;
+height:18px;
+border:2px solid white;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:99999;
+transform:translate(-50%,-50%);
+transition:.08s;
+}
+
+#cursor-dot{
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+z-index:99999;
+transform:translate(-50%,-50%);
+}
+
+/* PARTICLES */
+
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:22px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(18px);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+font-size:30px;
+font-weight:800;
+letter-spacing:.5px;
+}
+
+.logo span{
+color:#888;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-size:15px;
+font-weight:500;
+position:relative;
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0;
+height:2px;
+background:white;
+transition:.3s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.resume-btn{
+padding:12px 24px;
+background:white;
+color:black;
+text-decoration:none;
+border-radius:50px;
+font-weight:700;
+transition:.3s;
+}
+
+.resume-btn:hover{
+transform:translateY(-4px);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+padding:140px 8% 100px;
+position:relative;
+}
+
+.hero-inner{
+display:grid;
+grid-template-columns:1fr 450px;
+align-items:center;
+gap:60px;
+width:100%;
+}
+
+.hero-chip{
+display:inline-flex;
+align-items:center;
+gap:10px;
+padding:12px 18px;
+border:1px solid var(--border);
+border-radius:50px;
+background:rgba(255,255,255,.03);
+margin-bottom:30px;
+font-size:14px;
+color:#ddd;
+}
+
+.hero-chip span{
+width:10px;
+height:10px;
+background:#00ff88;
+border-radius:50%;
+}
+
+.hero h1{
+font-size:82px;
+line-height:1;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.hero h1 em{
+font-family:'Fraunces',serif;
+font-style:italic;
+font-weight:700;
+color:#d6d6d6;
+}
+
+.hero-role{
+font-size:24px;
+margin-bottom:20px;
+color:#999;
+}
+
+.hero-bio{
+font-size:18px;
+line-height:1.9;
+color:var(--muted);
+max-width:720px;
+margin-bottom:35px;
+}
+
+.hero-buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:40px;
+}
+
+.btn{
+padding:16px 34px;
+border-radius:60px;
+text-decoration:none;
+font-weight:700;
+transition:.4s;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.btn-primary{
+background:white;
+color:black;
+}
+
+.btn-primary:hover{
+transform:translateY(-5px);
+}
+
+.btn-outline{
+color:white;
+}
+
+.btn-outline:hover{
+background:white;
+color:black;
+}
+
+.socials{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.socials a{
+padding:14px 22px;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.08);
+border-radius:50px;
+text-decoration:none;
+color:white;
+font-size:14px;
+transition:.3s;
+}
+
+.socials a:hover{
+transform:translateY(-5px);
+background:white;
+color:black;
+}
+
+.hero-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.hero-image::before{
+content:'';
+position:absolute;
+width:430px;
+height:430px;
+background:linear-gradient(135deg,#ffffff22,#ffffff05);
+border-radius:50%;
+animation:spin 12s linear infinite;
+}
+
+.hero-image img{
+width:370px;
+height:370px;
+object-fit:cover;
+border-radius:50%;
+border:4px solid rgba(255,255,255,.08);
+position:relative;
+z-index:2;
+box-shadow:0 0 60px rgba(255,255,255,.08);
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+padding:0 8% 100px;
+}
+
+.stat-box{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:28px;
+text-align:center;
+transition:.4s;
+}
+
+.stat-box:hover{
+transform:translateY(-10px);
+}
+
+.stat-box h2{
+font-size:42px;
+margin-bottom:10px;
+}
+
+.stat-box p{
+color:#aaa;
+}
+
+/* SECTION */
+
+section{
+padding:110px 8%;
+}
+
+.section-head{
+margin-bottom:60px;
+text-align:center;
+}
+
+.tag{
+display:inline-block;
+padding:10px 18px;
+border-radius:50px;
+border:1px solid rgba(255,255,255,.08);
+background:rgba(255,255,255,.03);
+font-size:13px;
+margin-bottom:20px;
+color:#ccc;
+}
+
+.section-head h2{
+font-size:52px;
+}
+
+/* CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+padding:35px;
+border-radius:30px;
+transition:.5s;
+backdrop-filter:blur(12px);
+}
+
+.card:hover{
+transform:translateY(-12px) rotateX(5deg);
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:18px;
+}
+
+.card p{
+color:#bcbcbc;
+line-height:1.9;
+}
+
+/* SKILLS */
+
+.skills-wrap{
+display:flex;
+flex-wrap:wrap;
+gap:18px;
+justify-content:center;
+}
+
+.skill{
+padding:16px 24px;
+background:#101010;
+border-radius:50px;
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+font-weight:600;
+}
+
+.skill:hover{
+background:white;
+color:black;
+transform:translateY(-5px);
+}
+
+/* PROJECTS */
+
+.project-card a{
+display:inline-block;
+margin-top:22px;
+color:white;
+font-weight:700;
+text-decoration:none;
+}
+
+.project-card a:hover{
+text-decoration:underline;
+}
+
+/* YOUTUBE */
+
+.youtube-box{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.youtube-content p{
+font-size:18px;
+line-height:1.9;
+color:#bbb;
+margin-bottom:30px;
+}
+
+.youtube-btn{
+display:inline-block;
+padding:16px 30px;
+background:white;
+color:black;
+border-radius:50px;
+font-weight:700;
+text-decoration:none;
+}
+
+.video-card{
+overflow:hidden;
+border-radius:30px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* CONTACT */
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.contact-card{
+padding:30px;
+border-radius:28px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+text-align:center;
+}
+
+.contact-card h3{
+margin-bottom:12px;
+}
+
+.contact-card p{
+color:#bbb;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+color:#888;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+.hero-inner{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.hero-image{
+order:-1;
+}
+
+.hero h1{
+font-size:62px;
+}
+
+.hero-bio{
+margin:auto auto 35px;
+}
+
+.socials,
+.hero-buttons{
+justify-content:center;
+}
+
+.youtube-box{
+grid-template-columns:1fr;
+}
+
+.stats{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:700px){
+
+.nav-links{
+display:none;
+}
+
+.hero{
+padding-top:120px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.hero-role{
+font-size:20px;
+}
+
+.hero-image img{
+width:280px;
+height:280px;
+}
+
+.hero-image::before{
+width:320px;
+height:320px;
+}
+
+.section-head h2{
+font-size:40px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- CURSOR -->
+
+<div id="cursor"></div>
+<div id="cursor-dot"></div>
+
+<!-- PARTICLES -->
+
+<div id="particles-js"></div>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="logo">
+Pushpendra<span>.</span>
+</div>
+
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#youtube">YouTube</a>
+<a href="#contact">Contact</a>
+</div>
+
+<a href="assets/resume/Pushpendra Maurya resume (1).pdf" class="resume-btn" download>
+Resume
+</a>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-inner">
+
+<div>
+
+<div class="hero-chip">
+<span></span>
+Available for AI & Data Science Projects
+</div>
+
+<h1>
+Hi, I'm<br>
+<em>Pushpendra Maurya</em>
+</h1>
+
+<p class="hero-role">
+Data Scientist · AI Enthusiast · Python Developer
+</p>
+
+<p class="hero-bio">
+I'm Pushpendra Maurya, a fresher AI & Data Science enthusiast skilled in Python, Machine Learning, SQL, Data Analysis, Flask, FastAPI, Power BI, and Excel. Passionate about building real-world AI projects and continuously learning new technologies in Artificial Intelligence and Data Science.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#projects" class="btn btn-primary">
+View Projects
+</a>
+
+<a href="assets/resume/Pushpendra Maurya resume (1).pdf" download class="btn btn-outline">
+Download CV
+</a>
+
+</div>
+
+<div class="socials">
+
+<a href="https://github.com/Pushpendra52005" target="_blank">
+GitHub
+</a>
+
+<a href="https://www.linkedin.com/in/pushpendra-maurya/" target="_blank">
+LinkedIn
+</a>
+
+<a href="https://www.youtube.com/@AIExplorer143" target="_blank">
+YouTube
+</a>
+
+<a href="mailto:pushpendramaurya143654@gmail.com">
+Email
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="assets/profile/WhatsApp Image 2025-07-03 at 13.11.39.jpeg" alt="Pushpendra Maurya">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-box">
+<h2>6+</h2>
+<p>AI Projects</p>
+</div>
+
+<div class="stat-box">
+<h2>8+</h2>
+<p>Technical Skills</p>
+</div>
+
+<div class="stat-box">
+<h2>2023</h2>
+<p>Started AI Journey</p>
+</div>
+
+<div class="stat-box">
+<h2>∞</h2>
+<p>Learning Mindset</p>
+</div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="section-head">
+<div class="tag">About Me</div>
+<h2>Professional Summary</h2>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Education</h3>
+
+<p>
+BCA – Pursuing (2025–2028)<br>
+Indira Gandhi National Open University (IGNOU)<br><br>
+
+12th (2025)<br>
+National Institute of Open Schooling (NIOS)<br><br>
+
+10th (2020)<br>
+Uttarakhand Board of School Education
+</p>
+
+</div>
+
+<div class="card">
+<h3>Certification</h3>
+
+<p>
+Data Scientist Masters Program<br>
+VijAI Robotics Pvt Ltd<br>
+2023 – 2024
+</p>
+
+</div>
+
+<div class="card">
+<h3>Location</h3>
+
+<p>
+Haldwani, Nainital,<br>
+Uttarakhand (263139)
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="section-head">
+<div class="tag">Skills</div>
+<h2>Technical Expertise</h2>
+</div>
+
+<div class="skills-wrap">
+
+<div class="skill">Python</div>
+<div class="skill">SQL</div>
+<div class="skill">Machine Learning</div>
+<div class="skill">Power BI</div>
+<div class="skill">Excel</div>
+<div class="skill">Data Analysis</div>
+<div class="skill">Flask</div>
+<div class="skill">FastAPI</div>
+<div class="skill">Pandas</div>
+<div class="skill">NumPy</div>
+<div class="skill">GitHub</div>
+<div class="skill">Jupyter Notebook</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="section-head">
+<div class="tag">Projects</div>
+<h2>Featured Projects</h2>
+</div>
+
+<div class="grid">
+
+<div class="card project-card">
+<h3>Liver Disease Prediction</h3>
+
+<p>
+Machine Learning healthcare prediction project using classification algorithms.
+</p>
+
+<a href="https://github.com/Pushpendra52005/Liver-Disease" target="_blank">
+View Project →
+</a>
+</div>
+
+<div class="card project-card">
+<h3>Breast Cancer Prediction</h3>
+
+<p>
+AI-based cancer classification system using Machine Learning techniques.
+</p>
+
+<a href="https://github.com/Pushpendra52005/Breast-Cancer" target="_blank">
+View Project →
+</a>
+</div>
+
+<div class="card project-card">
+<h3>Iris Classification</h3>
+
+<p>
+Machine Learning iris flower prediction project using Python.
+</p>
+
+<a href="https://github.com/Pushpendra52005/iris_project" target="_blank">
+View Project →
+</a>
+</div>
+
+<div class="card project-card">
+<h3>LinkedIn Agentic AI</h3>
+
+<p>
+AI automation based LinkedIn assistant project using Agentic AI concepts.
+</p>
+
+<a href="https://github.com/Pushpendra52005/LinkedIn-Agentic-AI" target="_blank">
+View Project →
+</a>
+</div>
+
+<div class="card project-card">
+<h3>Advertising MLOPS</h3>
+
+<p>
+MLOPS based advertising analytics and deployment pipeline project.
+</p>
+
+<a href="https://github.com/Pushpendra52005/Advertising-MLOPS" target="_blank">
+View Project →
+</a>
+</div>
+
+<div class="card project-card">
+<h3>Price Optimization</h3>
+
+<p>
+AI-based pricing optimization project for business analytics.
+</p>
+
+<a href="https://github.com/Pushpendra52005/Price-Optimization" target="_blank">
+View Project →
+</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- YOUTUBE -->
+
+<section id="youtube">
+
+<div class="section-head">
+<div class="tag">Content Creation</div>
+<h2>AI Explorers Tech</h2>
+</div>
+
+<div class="youtube-box">
+
+<div class="youtube-content">
+
+<p>
+I create educational content around Python, AI, Data Science, and Machine Learning for beginners. My channel focuses on practical learning, projects, coding tutorials, and AI concepts in an easy-to-understand way.
+</p>
+
+<a href="https://www.youtube.com/@AIExplorer143" target="_blank" class="youtube-btn">
+Visit YouTube Channel
+</a>
+
+</div>
+
+<div class="video-card">
+
+<iframe width="100%" height="350"
+src="https://www.youtube.com/embed/Bu0U3i_Sja8"
+frameborder="0"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="section-head">
+<div class="tag">Contact</div>
+<h2>Let's Connect</h2>
+</div>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+<h3>Email</h3>
+<p>pushpendramaurya143654@gmail.com</p>
+</div>
+
+<div class="contact-card">
+<h3>Phone</h3>
+<p>+91 7017494938</p>
+</div>
+
+<div class="contact-card">
+<h3>Location</h3>
+<p>Haldwani, Nainital, Uttarakhand</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+© 2026 Pushpendra Maurya | AI & Data Science Portfolio
+
+</footer>
+
+<!-- PARTICLES -->
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+
+/* PARTICLES */
+
+particlesJS("particles-js",{
+particles:{
+number:{value:70},
+size:{value:3},
+move:{speed:2},
+line_linked:{
+enable:true,
+opacity:.2
+},
+color:{value:"#ffffff"}
+}
+});
+
+/* CUSTOM CURSOR */
+
+const cursor = document.getElementById("cursor");
+const dot = document.getElementById("cursor-dot");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+
+dot.style.left=e.clientX+"px";
+dot.style.top=e.clientY+"px";
+
+});
+
+</script>
+
+</body>
+</html>
